@@ -1,0 +1,24 @@
+{
+  "name": "act-2",
+  "version": "1.0.0",
+  "description": "repositorio de clases - prueba",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "node index.mjs",
+    "escribir": "node escribirArchivo.mjs",
+    "lecturaApi": "node lecturaApi.mjs"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomiLT2005/Prueba-de-Conexion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/TomiLT2005/Prueba-de-Conexion/issues"
+  },
+  "homepage": "https://github.com/TomiLT2005/Prueba-de-Conexion#readme"
+}
