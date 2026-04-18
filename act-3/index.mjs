@@ -5,7 +5,23 @@ import { escribirDatos } from './archivo.mjs'
 import { lecturaDatos } from './archivo.mjs'
 
 
-// Crear Servidor
+// FILTRO
+
+const datos = await obtenerDatosAPI()
+const datosFiltrados = datos.filter((usuario) => usuario.id < 10)
+const usuariosFiltrados = JSON.stringify(datosFiltrados, null, 8)
+
+
+
+
+
+
+
+
+
+
+
+// SERVIDOR
 const app = http.createServer(async(peticion, respuesta) => {
     
     if(peticion.method === 'GET'){
@@ -15,7 +31,18 @@ const app = http.createServer(async(peticion, respuesta) => {
             try {
                 //lectura de api y envio de datos al Cliente
                 const usuarios = await lecturaDatos()
-                return respuesta.end(JSON.stringify(usuarios,null,8))
+                return respuesta.end(usuarios)
+
+            } catch (e) {
+                console.log(e)
+                respuesta.statusCode = 500
+                return respuesta.end('Error en la lectura')
+            }
+        }
+        if(peticion.url === '/usuarios/filtrado'){
+            respuesta.statusCode = 200
+            try {
+                // aca va lo de filtrado
 
             } catch (e) {
                 console.log(e)
