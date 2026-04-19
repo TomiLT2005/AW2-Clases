@@ -1,23 +1,7 @@
-//-------------------------------------------
 import http from 'node:http'
 import { obtenerDatosAPI } from './fetchUsuarios.mjs'
 import { escribirDatos } from './archivo.mjs'
 import { lecturaDatos } from './archivo.mjs'
-
-
-// FILTRO
-
-const datos = await obtenerDatosAPI()
-const datosFiltrados = datos.filter((usuario) => usuario.id < 10)
-const usuariosFiltrados = JSON.stringify(datosFiltrados, null, 8)
-
-
-
-
-
-
-
-
 
 
 
@@ -39,11 +23,17 @@ const app = http.createServer(async(peticion, respuesta) => {
                 return respuesta.end('Error en la lectura')
             }
         }
-        if(peticion.url === '/usuarios/filtrado'){
+        if(peticion.url === '/usuarios/filtrados'){
             respuesta.statusCode = 200
             try {
-                // aca va lo de filtrado
+                //Filtro
+                const usuarios = await lecturaDatos()    // devuelve un string (texto plano) en formato JSON
+                const usuariosObj = JSON.parse(usuarios) // convertir el JSON a objeto/array de JS para poder usar el FILTER
 
+                const filtrados = usuariosObj.filter(usuario => usuario.id < 10)
+                return respuesta.end(JSON.stringify(filtrados,null,8)) // convertir el obj/array a texto JSON para enviar al cliente
+
+                
             } catch (e) {
                 console.log(e)
                 respuesta.statusCode = 500

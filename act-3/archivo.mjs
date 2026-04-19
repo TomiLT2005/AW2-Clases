@@ -19,7 +19,7 @@ async function lecturaDatos() {
         const ruta = path.join('usuarios.json')
         const contenido = await fsp.readFile(ruta,'utf8')
 
-        return contenido  //devuelve texto JSON
+        return contenido  // devuelve un string (texto plano) en formato JSON
 
     } catch (e) {
         console.log(e)
