@@ -1,0 +1,22 @@
+### Viendo peticiones
+
+GET  http://localhost:3000
+
+ 
+###-------------------------------------------
+
+GET  http://localhost:3000/usuarios
+
+###-------------------------------------------
+
+POST  http://localhost:3000/productos
+Content-Type: application/json
+
+{
+    "id": "10",
+    "producto": "Gorra Versace",
+    "categoria": "Gorras",
+    "precio": 8000
+}
+
+
