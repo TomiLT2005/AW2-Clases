@@ -1,4 +1,4 @@
-import express from 'express'
+
 import { join } from 'node:path'
 import { send } from 'node:process'
 import { json } from 'node:stream/consumers'
